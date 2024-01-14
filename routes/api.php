@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::controller(LoginController::class)->group(function () {
+    Route::post('/register', 'create_user')->name('register.user');
     Route::post('/login', 'login_user')->name('login_user');
     Route::get('/logout', 'logout_user')->middleware('auth:sanctum')->name('logout_user');
 });

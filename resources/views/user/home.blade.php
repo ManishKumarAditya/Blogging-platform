@@ -15,19 +15,35 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('post') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Titile</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Author</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="text" name="author" class="form-control @error('author') is-invalid @enderror" id="exampleInputPassword1">
+                            @error('author')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Content</label>
-                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="content" id="" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror"></textarea>
+                            @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
                         
                         <input type="submit" class="btn btn-primary" value="Submit">
